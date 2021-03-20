@@ -1,0 +1,59 @@
+_G.Level = "Sand Raid"
+if not game:IsLoaded() then
+	local Loading = Instance.new("Message",workspace)
+	Loading.Text = 'Waiting For The Game To Load....'
+	game.Loaded:Wait()
+	Loading:Destroy()
+end
+wait(2)
+
+local VirtualUser=game:service'VirtualUser'
+game:service'Players'.LocalPlayer.Idled:connect(function()
+VirtualUser:CaptureController()
+VirtualUser:ClickButton2(Vector2.new())
+end)
+
+if game.PlaceId == 6284881984 then
+while wait(1) do
+for _,v in pairs(game.Workspace.Living[game.Players.LocalPlayer.Name]:GetDescendants()) do
+		if v.Name == "Ban" then
+		    game.Workspace.Living[game.Players.LocalPlayer.Name].Ban:Destroy()
+		end
+    end
+	
+    if game.Workspace.Living[game.Players.LocalPlayer.Name]:FindFirstChild("HumanoidRootPart") then
+game:GetService("ReplicatedStorage").Remotes.CreateRoom:InvokeServer(_G.Level, "RandomPassword")
+game:GetService("ReplicatedStorage").Remotes.BeginRoom:FireServer()
+end
+end
+end
+
+while wait() do
+    pcall(function()
+        wait()
+    for _,v in pairs(game.Workspace.Living[game.Players.LocalPlayer.Name]:GetDescendants()) do
+		if v.Name == "Ban" then
+		    game.Workspace.Living[game.Players.LocalPlayer.Name].Ban:Destroy()
+		end
+    end
+for _,v in pairs(game.Players.LocalPlayer.Backpack:GetChildren()) do
+		if v.Name == "ClientMain" then
+		    game:GetService("Players").LocalPlayer.Backpack.ClientMain.Disabled = true
+		end
+    end
+for _,v in pairs(game.Players.LocalPlayer.Backpack:GetChildren()) do
+		if v.Name == "ArenaClient" then
+		    game:GetService("Players").LocalPlayer.Backpack.ArenaClient.Disabled = true
+		end
+end
+
+Distance = 7.5
+Priority = "Health" -- "Distance" or "Health"
+Skills = {
+    [1] = {true},
+    [2] = {true},
+    [3] = {true},
+    [4] = {true},
+}
+-- made by egg salad
+loadstring(game:HttpGet("https://raw.githubusercontent.com/Just-Egg-Salad/roblox-scripts/main/mania",true))()
